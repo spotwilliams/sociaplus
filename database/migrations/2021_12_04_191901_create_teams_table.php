@@ -16,6 +16,10 @@ class CreateTeamsTable extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->float('home_defensive_strength')->default(0.0);
+            $table->float('away_defensive_strength')->default(0.0);
+            $table->float('home_attacking_strength')->default(0.0);
+            $table->float('away_attacking_strength')->default(0.0);
         });
     }
 

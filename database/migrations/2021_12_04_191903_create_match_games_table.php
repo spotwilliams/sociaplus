@@ -16,6 +16,8 @@ class CreateMatchGamesTable extends Migration
         Schema::create('match_games', function (Blueprint $table) {
             $table->id();
             $table->integer('week')->default(0);
+            $table->integer('home_team_goals')->default(0);
+            $table->integer('away_team_goals')->default(0);
             $table->unsignedBigInteger('fixture_id');
             $table->unsignedBigInteger('home_team_id');
             $table->unsignedBigInteger('away_team_id');

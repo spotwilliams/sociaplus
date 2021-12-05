@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property Team $home
+ * @property Team $away
+ */
 class MatchGame extends Model
 {
     protected $table = 'match_games';
@@ -14,6 +18,13 @@ class MatchGame extends Model
         'home_team_id',
         'away_team_id',
         'fixture_id',
+        'home_team_goals',
+        'away_team_goals',
+    ];
+
+    protected $attributes = [
+        'home_team_goals' => 0,
+        'away_team_goals' => 0,
     ];
 
     public $timestamps = false;
