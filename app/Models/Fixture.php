@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @property League $league
+ */
 class Fixture extends Model
 {
     protected $table = 'fixtures';
@@ -46,6 +50,11 @@ class Fixture extends Model
         return $this->hasMany(MatchGame::class);
     }
 
+    public function league(): HasOne
+    {
+        return $this->hasOne(League::class);
+    }
+
     public function matchesOf(Team $team): Collection
     {
         return $this
@@ -68,6 +77,5 @@ class Fixture extends Model
                 return null;
             })
             ;
-
     }
 }

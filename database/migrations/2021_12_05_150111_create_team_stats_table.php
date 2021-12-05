@@ -16,6 +16,7 @@ class CreateTeamStatsTable extends Migration
         Schema::create('team_stats', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('team_id');
+            $table->unsignedBigInteger('fixture_id');
             $table->integer('points')->default(0);
             $table->integer('played_matches')->default(0);
             $table->integer('wins')->default(0);
@@ -26,6 +27,7 @@ class CreateTeamStatsTable extends Migration
             $table->integer('goals_difference')->default(0);
 
             $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('fixture_id')->references('id')->on('fixtures');
             $table->timestamps();
         });
     }

@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property Team $team
+ * @property League $league
  */
 class TeamStat extends Model
 {
     protected $table = 'team_stats';
     protected $fillable = [
         'team_id',
+        'fixture_id',
         'points',
         'played_matches',
         'wins',
@@ -36,6 +38,11 @@ class TeamStat extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function fixture(): BelongsTo
+    {
+        return $this->belongsTo(Fixture::class);
     }
 
     public function registerMatchGameResult(int $scoredGoals, int $concededGoals): void

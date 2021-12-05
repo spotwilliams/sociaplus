@@ -48,11 +48,6 @@ class LeagueTest extends TestCase
 
     private function generateLeague(LeagueService $service = null): League
     {
-        Team::create(['name' => 'A']);
-        Team::create(['name' => 'B']);
-        Team::create(['name' => 'C']);
-        Team::create(['name' => 'D']);
-
         if (!$service) {
 
             /** @var LeagueService $service */
@@ -60,7 +55,6 @@ class LeagueTest extends TestCase
         }
 
         return $service->startNewSimulation(Team::all());
-
     }
 
     private function generateDummyCalculator()
