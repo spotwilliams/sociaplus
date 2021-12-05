@@ -3,12 +3,13 @@
 namespace App\Services;
 
 use App\Models\Fixture;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class FixtureCreator
 {
-    public function schedule(array $teams): Fixture
+    public function schedule(Collection $teams): Fixture
     {
         try {
             DB::beginTransaction();

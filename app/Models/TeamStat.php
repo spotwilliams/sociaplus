@@ -50,10 +50,10 @@ class TeamStat extends Model
             $this->losts++;
         }
 
-
         $this->scored_goals += $scoredGoals;
         $this->conceded_goals += $concededGoals;
         $this->goals_difference = ($this->scored_goals - $this->conceded_goals);
+        $this->played_matches++;
 
         $this->save();
     }

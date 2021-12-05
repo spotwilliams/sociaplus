@@ -20,11 +20,13 @@ class MatchGame extends Model
         'fixture_id',
         'home_team_goals',
         'away_team_goals',
+        'played',
     ];
 
     protected $attributes = [
         'home_team_goals' => 0,
         'away_team_goals' => 0,
+        'played' => false,
     ];
 
     public $timestamps = false;

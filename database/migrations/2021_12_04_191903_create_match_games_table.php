@@ -18,6 +18,7 @@ class CreateMatchGamesTable extends Migration
             $table->integer('week')->default(0);
             $table->integer('home_team_goals')->default(0);
             $table->integer('away_team_goals')->default(0);
+            $table->boolean('played')->default(false);
             $table->unsignedBigInteger('fixture_id');
             $table->unsignedBigInteger('home_team_id');
             $table->unsignedBigInteger('away_team_id');

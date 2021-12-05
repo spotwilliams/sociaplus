@@ -102,7 +102,6 @@ class MatchGameSimulatorTest extends TestCase
         /** @var MatchGame $matchGame */
         $matchGame = $fixture->matches()->first();
 
-
         $mock = $this->mock(MatchResultCalculator::class, function (MockInterface $mock) {
         });
 
@@ -135,16 +134,17 @@ class MatchGameSimulatorTest extends TestCase
         $this->assertEquals(0, $matchGame->home->stats->goals_difference);
 
     }
+
     private function createFixture(): Fixture
     {
         /** @var FixtureCreator $service */
         $service = $this->app->make(FixtureCreator::class);
 
-        return $service->schedule([
+        return $service->schedule(collect([
             Team::create(['name' => 'A']),
             Team::create(['name' => 'B']),
             Team::create(['name' => 'C']),
             Team::create(['name' => 'D']),
-        ]);
+        ]));
     }
 }

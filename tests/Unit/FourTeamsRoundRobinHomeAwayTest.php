@@ -24,7 +24,7 @@ class FourTeamsRoundRobinHomeAwayTest extends TestCase
             Team::create(['name' => 'C']),
             Team::create(['name' => 'D']),
         ];
-        $schedule = $service->schedule($teams);
+        $schedule = $service->schedule(collect($teams));
 
         $this->assertEquals(6, $schedule->weeks);
     }
@@ -38,7 +38,7 @@ class FourTeamsRoundRobinHomeAwayTest extends TestCase
             Team::create(['name' => 'C']),
             Team::create(['name' => 'D']),
         ];
-        $schedule = $service->schedule($teams);
+        $schedule = $service->schedule(collect($teams));
 
         $this->assertEquals(12, $schedule->matches->count());
     }
@@ -52,7 +52,7 @@ class FourTeamsRoundRobinHomeAwayTest extends TestCase
             Team::create(['name' => 'C']),
             Team::create(['name' => 'D']),
         ];
-        $schedule = $service->schedule($teams);
+        $schedule = $service->schedule(collect($teams));
 
         foreach ($teams as $team) {
             $matchesOfTeam = $schedule->matchesOf($team);
@@ -80,7 +80,7 @@ class FourTeamsRoundRobinHomeAwayTest extends TestCase
             Team::create(['name' => 'C']),
             Team::create(['name' => 'D']),
         ];
-        $schedule = $service->schedule($teams);
+        $schedule = $service->schedule(collect($teams));
 
         foreach ($teams as $team) {
             $matchesOfTeam = $schedule->matchesOf($team);
