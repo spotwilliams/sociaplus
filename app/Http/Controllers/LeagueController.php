@@ -21,6 +21,7 @@ class LeagueController
             })
             ->orderBy('week', 'DESC')
             ->orderBy('points', 'DESC')
+            ->orderBy('goals_difference', 'DESC')
             ->get()
             ->groupBy('week');
 
