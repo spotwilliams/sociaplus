@@ -16,7 +16,7 @@ class CreateLeaguesTable extends Migration
         Schema::create('leagues', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fixture_id');
-            $table->integer('current_week')->default(1);
+            $table->integer('current_week')->default(0);
 
             $table->foreign('fixture_id')->references('id')->on('fixtures');
             $table->timestamps();

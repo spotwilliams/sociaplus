@@ -15,7 +15,11 @@ class League extends Model
         'fixture_id',
     ];
     protected $attributes = [
-        'current_week' => 1,
+        'current_week' => 0, // means that league didnt start
+    ];
+
+    protected $casts = [
+        'current_week' => 'integer'
     ];
 
     public function fixture(): BelongsTo
@@ -27,5 +31,10 @@ class League extends Model
     {
         $this->current_week++;
         $this->save();
+    }
+
+    public function isFinished(): bool
+    {
+        return $this->current_week === $this->fixture->weeks;
     }
 }

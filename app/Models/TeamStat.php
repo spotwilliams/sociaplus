@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property Team $team
@@ -22,6 +23,7 @@ class TeamStat extends Model
         'losts',
         'scored_goals',
         'conceded_goals',
+        'goals_difference',
     ];
 
     protected $attributes = [
@@ -45,7 +47,12 @@ class TeamStat extends Model
         return $this->belongsTo(Fixture::class);
     }
 
-    public function registerMatchGameResult(int $scoredGoals, int $concededGoals): void
+    public function progressions(): HasMany
+    {
+        return $this->hasMany(StatProgression::class);
+    }
+
+    public function registerMatchGameResult(int $scoredGoals, int $concededGoals): TeamStat
     {
         if ($scoredGoals === $concededGoals) {
             $this->points++;
@@ -63,5 +70,6 @@ class TeamStat extends Model
         $this->played_matches++;
 
         $this->save();
+        return $this;
     }
 }

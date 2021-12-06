@@ -21,6 +21,10 @@ class Fixture extends Model
         'weeks' => 0,
     ];
 
+    protected $casts = [
+        'weeks' => 'integer'
+    ];
+
     public $timestamps = false;
 
     public function addMatchesOfWeek(\Illuminate\Support\Collection $matches)

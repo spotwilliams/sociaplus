@@ -20,7 +20,7 @@ class LeagueTest extends TestCase
         $league = $this->generateLeague();
 
         $this->assertEquals(12, $league->fixture->matches()->count());
-        $this->assertEquals(1, $league->current_week);
+        $this->assertEquals(0, $league->current_week);
         $this->assertEquals(0, $league->fixture->matches()->where('played', true)->count());
     }
 
@@ -36,11 +36,11 @@ class LeagueTest extends TestCase
 
 
         $this->assertEquals(12, $league->fixture->matches()->count());
-        $this->assertEquals(1, $league->current_week);
+        $this->assertEquals(0, $league->current_week);
         $this->assertEquals(0, $league->fixture->matches()->where('played', true)->count());
 
         $service->simulateWeek($league);
-        $this->assertEquals(2, $league->current_week);
+        $this->assertEquals(1, $league->current_week);
         $this->assertEquals(2, $league->fixture->matches()->where('played', true)->count());
         $this->assertEquals(4, TeamStat::all()->count());
         $this->assertEquals(4, TeamStat::where('played_matches', 1)->count());

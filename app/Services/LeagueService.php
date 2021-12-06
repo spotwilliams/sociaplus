@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\League;
 use App\Models\MatchGame;
+use App\Models\Team;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,7 @@ class LeagueService
             $matches = $league
                 ->fixture
                 ->matches()
-                ->where('week', $league->current_week)
+                ->where('week', $league->current_week + 1)
                 ->get();
 
             /** @var MatchGame $match */
@@ -61,6 +62,15 @@ class LeagueService
             DB::rollBack();
             throw new \Exception('Something went wrong');
         }
+    }
 
+    public function getCurrentSimulation(): League
+    {
+        $league = League::orderBy('created_at', 'DESC')->first();
+        if (! $league) {
+            $league = $this->startNewSimulation(Team::all());
+        }
+
+        return $league;
     }
 }
