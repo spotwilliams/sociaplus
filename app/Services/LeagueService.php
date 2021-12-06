@@ -64,10 +64,10 @@ class LeagueService
         }
     }
 
-    public function getCurrentSimulation(): League
+    public function getCurrentSimulation(bool $fromScratch = false): League
     {
         $league = League::orderBy('created_at', 'DESC')->first();
-        if (! $league) {
+        if (!$league || $fromScratch) {
             $league = $this->startNewSimulation(Team::all());
         }
 

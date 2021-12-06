@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\LeagueController::class, 'index']);
 Route::post('/simulate', [\App\Http\Controllers\LeagueController::class, 'simulate'])->name('simulate');
-Route::post('/simulate/all', [\App\Http\Controllers\LeagueController::class, 'simulate'])->name('simulate_all');
+Route::post('/simulate/all', [\App\Http\Controllers\LeagueController::class, 'simulateAll'])->name('simulate_all');
